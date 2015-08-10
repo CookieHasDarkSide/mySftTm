@@ -13,9 +13,11 @@ import static java.nio.file.Files.exists;
  */
 public class IOSys {
     private static String url = null;
+    private static String urlOut = null;
         public String chckDir() throws FileNotFoundException {
             Scanner sc = new Scanner(System.in);
             url = sc.nextLine();
+            urlOut = sc.nextLine();
             IOSys.exists(url);
             String line = IOSys.read(url);
             return line;
@@ -34,23 +36,39 @@ public class IOSys {
         File nicol = new File(url);
         exists(fileName);
         try {
-            //Объект для чтения файла в буфер
             BufferedReader in = new BufferedReader(new FileReader(nicol.getAbsoluteFile()));
             try {
-                //В цикле построчно считываем файл
                 String s;
                 while ((s = in.readLine()) != null) {
                     sb.append(s);
                     sb.append("\n");
                 }
             } finally {
-                //Также не забываем закрыть файл
                 in.close();
             }
         } catch(IOException e) {
             throw new RuntimeException(e);
         }
 
-        //Возвращаем полученный текст с файла
         return sb.toString();}
+
+    public static void write(String text) {
+        File file = new File(urlOut);
+
+        try {
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            PrintWriter out = new PrintWriter(file.getAbsoluteFile());
+
+            try {
+                out.print(text);
+            } finally {
+                out.close();
+            }
+        } catch(IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

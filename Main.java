@@ -9,7 +9,9 @@ import java.io.FileNotFoundException;
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-    Splitter test = new Splitter();
-        int a = test.split();
+    Splitter testSpl = new Splitter();
+        IOSys testIO = new IOSys();
+
+        testIO.write(String.valueOf(testSpl.split(testIO.chckDir())));
     }
 }

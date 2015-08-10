@@ -9,11 +9,11 @@ import java.util.Scanner;
 public class Splitter {
 
 
-    public static int split() throws FileNotFoundException {
+    public static int split(String s) throws FileNotFoundException {
         int myMaxCount =0;
         int count=0;
-        IOSys a = new IOSys();
-        String line = a.chckDir();
+        //IOSys a = new IOSys();
+        String line = s;
 
         int[] inLine = new int[line.length()];
         String[] mySLine = new String[line.length()];
@@ -35,7 +35,7 @@ public class Splitter {
             }if(inLine[i] == 1) count = 0;
 
         }
-        System.out.println(myMaxCount);
+
             return myMaxCount;
         }
 
